@@ -6,14 +6,14 @@ const TabsLayout = () => {
    <>
     <Tabs>
         <Tabs.Screen 
-        name="home"
-        options={{
-            title:'Home',
-            headerShown: false,
-            tabBarIcon: ({ color, focused }) => (
-                
-            )
-        }}
+        // name="home"
+        // options={{
+        //     title:'Home',
+        //     headerShown: false,
+        //     tabBarIcon: ({ color, focused }) => (
+
+        //     )
+        // }}
         />
     </Tabs>
    </>
