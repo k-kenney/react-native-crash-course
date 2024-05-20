@@ -1,12 +1,23 @@
-import { View, Text } from 'react-native'
-import React from 'react'
+import { View, Text } from 'react-native';
+import { Tabs, Redirect } from 'expo-router';
 
-const Tabs = () => {
+const TabsLayout = () => {
   return (
-    <View>
-      <Text>Tabs</Text>
-    </View>
+   <>
+    <Tabs>
+        <Tabs.Screen 
+        name="home"
+        options={{
+            title:'Home',
+            headerShown: false,
+            tabBarIcon: ({ color, focused }) => (
+                
+            )
+        }}
+        />
+    </Tabs>
+   </>
   )
 }
 
-export default Tabs
+export default TabsLayout
