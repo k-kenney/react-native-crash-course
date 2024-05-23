@@ -11,11 +11,10 @@ import { signIn } from "../../lib/appwrite";
 
 const SignIn = () => {
   const [form, setForm] = useState({
-    email: '',
-    password: ''
+    email: "",
+    password: "",
   });
 
-  
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const submit = async () => {
@@ -25,19 +24,19 @@ const SignIn = () => {
     setIsSubmitting(true);
 
     try {
-      await signIn(form.email, form.password)
+      await signIn(form.email, form.password);
+      const result = await getCurrentUser();
+      setUser(result);
+      setIsLogged(true);
 
-      
-
-      router.replace('/home')
+      Alert.alert("Success", "User Signed in successfully");
+      router.replace("/home");
     } catch (error) {
       Alert.alert("Error", error.message);
     } finally {
       setIsSubmitting(false);
     }
-    signIn();
   };
-
 
   return (
     <SafeAreaView className="bg-primary h-full ">
@@ -65,20 +64,23 @@ const SignIn = () => {
             value={form.password}
             handleChangeText={(e) => setForm({ ...form, password: e })}
           />
-          <CustomButton 
-          title="Sign-in"
-          handlePress={submit}
-          containerStyles="mt-7"
-          isLoading={isSubmitting}
+          <CustomButton
+            title="Sign-in"
+            handlePress={submit}
+            containerStyles="mt-7"
+            isLoading={isSubmitting}
           />
 
           <View className="justify-center pt-5 flex-row gap-2">
             <Text className="text-lg text-gray-100 font-pregular">
               Don't have an account?
             </Text>
-            <Link href="/sign-up"
-            className="text-lg font-psemibold text-secondary">
-            Sign Up</Link>
+            <Link
+              href="/sign-up"
+              className="text-lg font-psemibold text-secondary"
+            >
+              Sign Up
+            </Link>
           </View>
         </View>
       </ScrollView>
